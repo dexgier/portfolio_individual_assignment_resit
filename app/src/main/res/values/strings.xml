@@ -2,5 +2,18 @@
     <string name="app_name">NavigationDrawerTaskAssignment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="welcome_message">Welcome, Robbie!</string>
+    <string name="points_message">You currently have:</string>
+    <string name="points_points">points!</string>
+   <string name="title_activity_add_task_update">Edit</string>
+    <string name="title_activity_add_task_new">New</string>
+
+    <string name="title_placeholder">Title</string>
+    <string name="description_placeholder">Description</string>
+    <string name="points_label_placeholder">Points:</string>
+    <string name="responsible_placeholder">Robbie de Gier</string>
+    <string name="points_placeholder">100</string>
+
+
 
 </resources>

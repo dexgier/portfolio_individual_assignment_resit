@@ -42,4 +42,5 @@ public class TaskRepository {
     public void deleteAll(List<Task> task){
         mExecutor.execute(()->dao.delete(task));
     }
+
 }

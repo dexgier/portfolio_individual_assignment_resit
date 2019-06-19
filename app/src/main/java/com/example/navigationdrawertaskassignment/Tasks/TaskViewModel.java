@@ -40,4 +40,6 @@ public class TaskViewModel extends AndroidViewModel {
     public void deleteAll(){
         mRepository.deleteAll(mTasks.getValue());
     }
+
+
 }

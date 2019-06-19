@@ -39,6 +39,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return mTasks.size();
     }
 
+    public void updateTasksList(List<Task> newTasksList) {
+        mTasks = newTasksList;
+        if(newTasksList != null) {
+            this.notifyDataSetChanged();
+        }
+    }
+
 
     public class TaskViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
