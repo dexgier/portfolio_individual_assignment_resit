@@ -10,6 +10,7 @@ import com.example.navigationdrawertaskassignment.database.TaskRepository;
 
 import java.util.List;
 
+//taskviewmodel including livedata, implements insert, update, delete, view, and deletAll.
 public class TaskViewModel extends AndroidViewModel {
 
     private TaskRepository mRepository;

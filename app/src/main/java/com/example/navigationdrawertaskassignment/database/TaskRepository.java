@@ -13,7 +13,7 @@ public class TaskRepository {
     private TaskRoomDatabase db;
     private TaskDAO dao;
     private LiveData<List<Task>> mTasks;
-    /**creating pool with exactly 1 thread**/
+
     private Executor mExecutor = Executors.newSingleThreadExecutor();
 
     public TaskRepository(Context context){
@@ -24,9 +24,7 @@ public class TaskRepository {
     public LiveData<List<Task>> getAllTasks() {
         return mTasks;
     }
-    /**dont have to communicate with the UI thread
-     * Dont execute queries on main thread
-     * **/
+
     public void insert(final Task task){
         mExecutor.execute(() -> dao.insert(task));
     }

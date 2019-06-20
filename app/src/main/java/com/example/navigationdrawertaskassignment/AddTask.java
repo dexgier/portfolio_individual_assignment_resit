@@ -19,6 +19,7 @@ import com.example.navigationdrawertaskassignment.Tasks.Task;
 
 public class AddTask extends AppCompatActivity {
 
+    //class variables
     private TextView mTitle;
     private TextView mDescription;
     private Spinner mPoints;
@@ -30,14 +31,14 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        //init stuff
         initButton();
         mTitle = findViewById(R.id.titleEditText);
         mDescription = findViewById(R.id.descriptionEditText);
         mPoints = findViewById(R.id.pointsEditText);
         mResponsible = findViewById(R.id.responsibleEditText);
 
-
-
+        //Check if task exists and then set the right values to the fields
         task = getIntent().getParcelableExtra(TaskFragment.VIEW_TASK);
         if (task != null) {
             mTitle.setText(task.getTitle());
@@ -50,6 +51,7 @@ public class AddTask extends AppCompatActivity {
         }
     }
 
+    //initialize buttons and take care of making a new intent or editing a existing intent.
     private void initButton() {
         ImageButton mAddTaskButton =findViewById(R.id.addTask);
         mAddTaskButton.setOnClickListener(v -> {

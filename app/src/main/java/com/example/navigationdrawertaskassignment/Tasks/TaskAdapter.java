@@ -11,6 +11,7 @@ import com.example.navigationdrawertaskassignment.R;
 
 import java.util.List;
 
+//taskAdapter with viewholder to handle displaying the right values
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
     private List<Task> mTasks;
 

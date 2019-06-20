@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+//task table to use for livedata
 @Entity(tableName = "taskTable")
 public class Task implements Parcelable {
 

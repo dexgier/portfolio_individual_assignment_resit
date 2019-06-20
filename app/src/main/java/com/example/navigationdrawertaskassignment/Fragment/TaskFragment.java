@@ -51,16 +51,16 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
     public static final int VIEW_TASK_CODE = 3421;
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_task,container,false);
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
 
         mRecyclerView = view.findViewById(R.id.taskRecyclerView);
         addTaskButton = view.findViewById(R.id.addTask);
         deleteListButton = view.findViewById(R.id.deleteList);
 
+        //set adapter and stuff to recyclerview
         mTasks = new ArrayList<>();
         mvModel = ViewModelProviders.of(this).get(TaskViewModel.class);
         ((TaskViewModel) mvModel).getTasks().observe(this, tasks -> {
@@ -84,6 +84,7 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
         touchHelperHandler();
         mRecyclerView.addOnItemTouchListener(this);
 
+        //buttons for add and delete (listeners)
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,8 +103,8 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
         return view;
     }
 
-
-        public void updateUI() {
+    //update ui
+    public void updateUI() {
         if (mTaskAdapter == null) {
             mTaskAdapter = new TaskAdapter(mTasks);
             mRecyclerView.setAdapter(mTaskAdapter);
@@ -112,26 +113,28 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
         }
     }
 
+    //checks for update or new intent as a result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_TASK_CODE){
-            if(resultCode == RESULT_OK){
+        if (requestCode == NEW_TASK_CODE) {
+            if (resultCode == RESULT_OK) {
                 Task task = data.getParcelableExtra(TaskFragment.ADD_TASK);
-                ((TaskViewModel)mvModel).insert(task);
+                ((TaskViewModel) mvModel).insert(task);
             }
-        }else if(requestCode == VIEW_TASK_CODE){
-            if(resultCode == RESULT_OK) {
+        } else if (requestCode == VIEW_TASK_CODE) {
+            if (resultCode == RESULT_OK) {
                 Task updateTask = data.getParcelableExtra(TaskFragment.VIEW_TASK);
                 Log.d("1234", updateTask.getTitle());
-                ((TaskViewModel)mvModel).update(updateTask);
+                ((TaskViewModel) mvModel).update(updateTask);
             }
         }
     }
 
+    //deletes everything in list
     private void deleteAll(List<Task> tasksList) {
-        if(tasksList.size() > 0) {
-            ((TaskViewModel)mvModel).deleteAll();
+        if (tasksList.size() > 0) {
+            ((TaskViewModel) mvModel).deleteAll();
             Snackbar undoAll = Snackbar.make(mRecyclerView, "All the entries have been deleted from the list!", Snackbar.LENGTH_LONG);
             undoAll.show();
         } else {
@@ -140,12 +143,13 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
         }
     }
 
+    //view task
     @Override
     public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
         View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-        if (child != null){
+        if (child != null) {
             int adapterPosition = recyclerView.getChildAdapterPosition(child);
-            if (mGestureDetector.onTouchEvent(motionEvent)){
+            if (mGestureDetector.onTouchEvent(motionEvent)) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
                 intent.putExtra(VIEW_TASK, mTasks.get(adapterPosition));
                 startActivityForResult(intent, VIEW_TASK_CODE);
@@ -175,20 +179,20 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
                 int position = (viewHolder.getAdapterPosition());
                 final Task STORE_GAME = mTasks.get(position);
-                ((TaskViewModel)mvModel).delete(mTasks.get(position));
+                ((TaskViewModel) mvModel).delete(mTasks.get(position));
                 mTasks.remove(position);
                 mTaskAdapter.notifyItemRemoved(position);
 
                 String points = STORE_GAME.getPoints();
-                int addPoints =  Integer.parseInt(points);
+                int addPoints = Integer.parseInt(points);
                 HomeFragment.addPoints(addPoints);
 
 
-                Snackbar undoSnackBar = Snackbar.make(viewHolder.itemView, "Completed task: " + STORE_GAME.getTitle()+ ", " + STORE_GAME.getPoints() + " points have been added!", Snackbar.LENGTH_LONG);
+                Snackbar undoSnackBar = Snackbar.make(viewHolder.itemView, "Completed task: " + STORE_GAME.getTitle() + ", " + STORE_GAME.getPoints() + " points have been added!", Snackbar.LENGTH_LONG);
                 undoSnackBar.setAction("Undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ((TaskViewModel)mvModel).insert(STORE_GAME);
+                        ((TaskViewModel) mvModel).insert(STORE_GAME);
                     }
                 });
                 undoSnackBar.show();

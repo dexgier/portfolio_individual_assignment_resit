@@ -6,6 +6,7 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:text="@string/choose_file" />
 
     <EditText
@@ -16,11 +17,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:autofillHints=""
         android:hint="@string/enter_task_title"
         android:inputType=""
-        android:autofillHints="" />
+        android:textColor="@color/colorPrimary" />
 
     <EditText
         android:id="@+id/edit_text_task_date"
@@ -32,7 +34,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:hint="@string/enter_task_date" />
+        android:hint="@string/enter_task_date"
+        android:textColor="@color/colorPrimary" />
 
     <Spinner
         android:id="@+id/spinner_task_points"
@@ -98,4 +101,5 @@
         android:gravity="center"
         android:text="@string/show_uploads"
         android:textSize="16sp" />
+
 </RelativeLayout>
