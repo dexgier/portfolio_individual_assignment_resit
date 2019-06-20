@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.navigationdrawertaskassignment.R;
@@ -15,7 +16,6 @@ public class HomeFragment extends Fragment {
 
     private TextView pointsTextView;
     public static int totalPoints = 0;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

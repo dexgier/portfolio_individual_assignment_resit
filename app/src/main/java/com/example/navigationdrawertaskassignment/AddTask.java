@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +21,8 @@ public class AddTask extends AppCompatActivity {
 
     private TextView mTitle;
     private TextView mDescription;
-    private TextView mPoints;
-    private TextView mResponsible;
-    private ImageButton mAddTaskButton;
+    private Spinner mPoints;
+    private Spinner mResponsible;
     private Task task;
 
     @Override
@@ -30,28 +30,33 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        initButton();
         mTitle = findViewById(R.id.titleEditText);
         mDescription = findViewById(R.id.descriptionEditText);
         mPoints = findViewById(R.id.pointsEditText);
         mResponsible = findViewById(R.id.responsibleEditText);
-        mAddTaskButton = findViewById(R.id.addTask);
+
+
 
         task = getIntent().getParcelableExtra(TaskFragment.VIEW_TASK);
         if (task != null) {
             mTitle.setText(task.getTitle());
             mDescription.setText(task.getDescription());
-            mPoints.setText(task.getResponsible());
-            mResponsible.setText(task.getResponsible());
+            mPoints.setSelection(((ArrayAdapter) mPoints.getAdapter()).getPosition(task.getPoints()));
+            mResponsible.setSelection(((ArrayAdapter) mResponsible.getAdapter()).getPosition(task.getResponsible()));
             this.setTitle(R.string.title_activity_add_task_update);
         } else {
             this.setTitle(R.string.title_activity_add_task_new);
         }
+    }
 
+    private void initButton() {
+        ImageButton mAddTaskButton =findViewById(R.id.addTask);
         mAddTaskButton.setOnClickListener(v -> {
             String titleText = mTitle.getText().toString();
             String descriptionText = mDescription.getText().toString();
-            String pointsText = mPoints.getText().toString();
-            String responsibleText = mResponsible.getText().toString();
+            String pointsText = mPoints.getSelectedItem().toString();
+            String responsibleText = mResponsible.getSelectedItem().toString();
 
             if (task != null) {
                 if (!TextUtils.isEmpty(titleText) && !TextUtils.isEmpty(descriptionText) && !TextUtils.isEmpty(pointsText) && !TextUtils.isEmpty(responsibleText)) {
@@ -69,14 +74,14 @@ public class AddTask extends AppCompatActivity {
                     Toast.makeText(this, "Please fill in all the fields",Toast.LENGTH_SHORT).show();
                 }
             } else {
-            if(!TextUtils.isEmpty(titleText) && !TextUtils.isEmpty(descriptionText) && !TextUtils.isEmpty(pointsText) && !TextUtils.isEmpty(responsibleText)){
-                Task task = new Task(titleText,descriptionText, pointsText, responsibleText);
-                Intent intent = new Intent();
-                intent.putExtra(TaskFragment.ADD_TASK,task);
-                setResult(Activity.RESULT_OK,intent);
-                finish();
-            }else
-                Toast.makeText(this, "Please fill in all the fields",Toast.LENGTH_SHORT).show();
+                if(!TextUtils.isEmpty(titleText) && !TextUtils.isEmpty(descriptionText) && !TextUtils.isEmpty(pointsText) && !TextUtils.isEmpty(responsibleText)){
+                    Task task = new Task(titleText,descriptionText, pointsText, responsibleText);
+                    Intent intent = new Intent();
+                    intent.putExtra(TaskFragment.ADD_TASK,task);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }else
+                    Toast.makeText(this, "Please fill in all the fields",Toast.LENGTH_SHORT).show();
             }
         });
 

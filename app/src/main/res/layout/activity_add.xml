@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
 
-    <EditText
+    <Spinner
         android:id="@+id/pointsEditText"
         android:layout_width="270dp"
         android:layout_height="50dp"
@@ -80,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="132dp"
         android:ems="10"
+        android:entries="@array/pointsOptions"
         android:inputType="textPersonName"
         android:textColor="@color/colorPrimary"
         android:textColorLink="@color/colorPrimaryDark"
@@ -99,13 +100,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointsEditText" />
 
-    <EditText
+    <Spinner
         android:id="@+id/responsibleEditText"
         android:layout_width="270dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:entries="@array/responsibleOptions"
         android:inputType="textPersonName"
         android:textColor="@color/colorPrimary"
         android:textColorLink="@color/colorPrimaryDark"
@@ -143,6 +145,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_add_circle_black" />
+
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

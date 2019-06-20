@@ -14,6 +14,22 @@
     <string name="responsible_placeholder">Robbie de Gier</string>
     <string name="points_placeholder">100</string>
 
+    <string-array name="pointsOptions">
+        <item>50</item>
+        <item>100</item>
+        <item>150</item>
+        <item>200</item>
+        <item>250</item>
+    </string-array>
+
+    <string-array name="responsibleOptions">
+        <item>Member 1</item>
+        <item>Member 2</item>
+        <item>Member 3</item>
+        <item>Member 4</item>
+        <item>Member 5</item>
+    </string-array>
+
 
 
 </resources>

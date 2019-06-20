@@ -12,6 +12,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -38,8 +39,6 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
     private RecyclerView mRecyclerView;
     private TaskAdapter mTaskAdapter;
     private ViewModel mvModel;
-    private TaskRepository taskRepo;
-    private HomeFragment homeFrag;
 
     //private GestureDetector mGestureDetector;
     private ImageButton addTaskButton;
@@ -124,6 +123,7 @@ public class TaskFragment extends Fragment implements RecyclerView.OnItemTouchLi
         }else if(requestCode == VIEW_TASK_CODE){
             if(resultCode == RESULT_OK) {
                 Task updateTask = data.getParcelableExtra(TaskFragment.VIEW_TASK);
+                Log.d("1234", updateTask.getTitle());
                 ((TaskViewModel)mvModel).update(updateTask);
             }
         }

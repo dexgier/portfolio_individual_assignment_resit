@@ -31,7 +31,7 @@ public class TaskRepository {
         mExecutor.execute(() -> dao.insert(task));
     }
 
-    public void update(final Task task){
+    public void update(final Task task) {
         mExecutor.execute(() -> dao.update(task));
     }
 
