@@ -6,23 +6,69 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose file" />
+        android:text="@string/choose_file" />
 
     <EditText
         android:id="@+id/edit_text_file_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_below="@+id/image_view"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/enter_task_title"
+        android:inputType=""
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/edit_text_task_date"
+        android:layout_width="387dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/button_choose_image"
-        android:hint="Enter file name" />
+        android:layout_below="@+id/edit_text_file_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/enter_task_date" />
+
+    <Spinner
+        android:id="@+id/spinner_task_points"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_text_task_date"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:entries="@array/pointsOptions"
+        android:hint="@string/enter_task_responsible" />
+
+    <Spinner
+        android:id="@+id/spinner_task_responsible"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_task_points"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:entries="@array/responsibleOptions"
+        android:hint="@string/enter_task_responsible" />
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/progress_bar"
-        android:layout_below="@id/edit_text_file_name"
-        android:layout_marginTop="16dp" />
+        android:layout_width="189dp"
+        android:layout_height="141dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="1dp"
+        android:layout_toEndOf="@+id/button_choose_image"
+        android:contentDescription="@string/todo" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -39,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Upload" />
+        android:text="@string/upload" />
 
     <TextView
         android:id="@+id/text_view_show_uploads"
@@ -50,6 +96,6 @@
         android:layout_marginStart="25dp"
         android:layout_toEndOf="@+id/button_upload"
         android:gravity="center"
-        android:text="Show Uploads"
+        android:text="@string/show_uploads"
         android:textSize="16sp" />
 </RelativeLayout>

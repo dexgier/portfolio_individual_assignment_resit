@@ -13,7 +13,13 @@
     <string name="points_label_placeholder">Points:</string>
     <string name="responsible_placeholder">Robbie de Gier</string>
     <string name="points_placeholder">100</string>
-
+    <string name="choose_file">Choose file</string>
+    <string name="enter_task_date">Enter task date</string>
+    <string name="enter_task_title">Enter task title</string>
+    <string name="enter_task_responsible">Enter task responsible</string>
+    <string name="show_uploads">Show Uploads</string>
+    <string name="upload">Upload</string>
+    <string name="todo">TODO</string>
     <string-array name="pointsOptions">
         <item>50</item>
         <item>100</item>
